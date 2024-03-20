@@ -1,0 +1,474 @@
+[
+    {
+        "id": "58c8dafe824a584d",
+        "type": "tab",
+        "label": "Smarthome",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1f8c326e09d68bd9",
+        "type": "inject",
+        "z": "58c8dafe824a584d",
+        "name": "Data Sensor Acak",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "77c8c2a7484e9514",
+                "876b4663ba15190e"
+            ]
+        ]
+    },
+    {
+        "id": "77c8c2a7484e9514",
+        "type": "function",
+        "z": "58c8dafe824a584d",
+        "name": "Nilai Acak",
+        "func": "msg.payload = Math.random() * 30 + 20; // Nilai acak antara 20 hingga 50\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "0313a2f106228388",
+                "a13f12bae13cff81",
+                "e3f83410178f8097"
+            ]
+        ]
+    },
+    {
+        "id": "0313a2f106228388",
+        "type": "ui_chart",
+        "z": "58c8dafe824a584d",
+        "name": "Suhu",
+        "group": "50bae2f9.20b3d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Suhu",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Tidak Ada Data",
+        "dot": false,
+        "ymin": "15",
+        "ymax": "50",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 580,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a13f12bae13cff81",
+        "type": "ui_chart",
+        "z": "58c8dafe824a584d",
+        "name": "Kualitas Udara",
+        "group": "50bae2f9.20b3d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Kualitas Udara",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Tidak Ada Data",
+        "dot": false,
+        "ymin": "15",
+        "ymax": "50",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 560,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d447b3388c931231",
+        "type": "ui_button",
+        "z": "58c8dafe824a584d",
+        "name": "Tutup gerbang",
+        "group": "50bae2f9.20b3d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Tutup gerbang",
+        "tooltip": "Klik untuk memberi makan ikan",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "",
+        "topicType": "str",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "f1f888ce5ad0f935"
+            ]
+        ]
+    },
+    {
+        "id": "f1f888ce5ad0f935",
+        "type": "debug",
+        "z": "58c8dafe824a584d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "310599557b646937",
+        "type": "ui_text_input",
+        "z": "58c8dafe824a584d",
+        "name": "Jadwal Penutupan Gerbang",
+        "label": "Jadwal Penutupan Gerbang (dalam menit)",
+        "tooltip": "Atur interval untuk memberi makan ikan",
+        "group": "50bae2f9.20b3d",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "500",
+        "topic": "",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "3b2916d9a9b2a720"
+            ]
+        ]
+    },
+    {
+        "id": "3b2916d9a9b2a720",
+        "type": "change",
+        "z": "58c8dafe824a584d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83c588cf7828f60c",
+        "type": "inject",
+        "z": "58c8dafe824a584d",
+        "name": "Mulai penutupan gerbang",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "e5664e5064a815d0"
+            ]
+        ]
+    },
+    {
+        "id": "e5664e5064a815d0",
+        "type": "switch",
+        "z": "58c8dafe824a584d",
+        "name": "Jadwal Penutupan gerbang",
+        "property": "interval",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "d0388eed57a15eb3"
+            ]
+        ]
+    },
+    {
+        "id": "d0388eed57a15eb3",
+        "type": "trigger",
+        "z": "58c8dafe824a584d",
+        "name": "penutup gerbang",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "f1f888ce5ad0f935"
+            ]
+        ]
+    },
+    {
+        "id": "ae08b0c780bf2e92",
+        "type": "debug",
+        "z": "58c8dafe824a584d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e3f83410178f8097",
+        "type": "join",
+        "z": "58c8dafe824a584d",
+        "name": "Gabungkan Data",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "ae08b0c780bf2e92"
+            ]
+        ]
+    },
+    {
+        "id": "4139018aeb86eae3",
+        "type": "ui_chart",
+        "z": "58c8dafe824a584d",
+        "name": "tingkat kelembapan",
+        "group": "50bae2f9.20b3d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "tingkat kelembapan",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Tidak Ada Data",
+        "dot": false,
+        "ymin": "5",
+        "ymax": "9",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 590,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "876b4663ba15190e",
+        "type": "function",
+        "z": "58c8dafe824a584d",
+        "name": "Kelembapan acak",
+        "func": "msg.payload = Math.random() * 3 + 6; // Nilai Kelembapan antara 6 hingga 9\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "e3f83410178f8097",
+                "4139018aeb86eae3"
+            ]
+        ]
+    },
+    {
+        "id": "cc6452cc09e368f2",
+        "type": "comment",
+        "z": "58c8dafe824a584d",
+        "name": "B42 - Muhammad Ibnu Atho'illah",
+        "info": "",
+        "x": 490,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "ee0080c719507ff2",
+        "type": "comment",
+        "z": "58c8dafe824a584d",
+        "name": "UTS - MySkill",
+        "info": "",
+        "x": 490,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "50bae2f9.20b3d",
+        "type": "ui_group",
+        "name": "Monitoring Smarthome",
+        "tab": "1d209172.35d05d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1d209172.35d05d",
+        "type": "ui_tab",
+        "name": "(B42 - Muhammad Ibnu Atho'illah) Sistem SmartHome",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
